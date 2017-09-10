@@ -7,4 +7,49 @@
 # include <math.h>
 # include "./minilibx_macos/mlx.h"
 
-#define ERR_ARG_CNT "usage: ./fdf {file_name}"
+typedef struct		s_env
+{
+	//t_points		**cart;
+	char      *tit;
+	int				x;
+	int				y;
+	float			x1;
+	float			y1;
+	float			x2;
+	float			y2;
+	int				min_h;
+	int				max_h;
+	float			curr_z;
+	float			next_z;
+	int				w;
+	int				h;
+	int				big;
+	int				gap;
+	int				i;
+	int				j;
+	float			m;
+	float			rise;
+	float			run;
+	float			max;
+	float			maxside;
+	void			*mlx;
+	void			*win;
+}					t_env;
+
+typedef	struct		s_bresen
+{
+	int				x;
+	int				y;
+	float			offset;
+	float			threshold;
+	float			thresholdinc;
+	float			tmp;
+	float			adjust;
+	float			delta;
+	int				colorgrade;
+	float			color;
+	float			range;
+	char			*str;
+	char			**coord;
+	char			*line;
+}					t_bresen;

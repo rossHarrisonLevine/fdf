@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-void erros(char *errno)
+void erros(char *err)
 {
-	ft_putstr(errno);
+	ft_putstr(err);
 }
