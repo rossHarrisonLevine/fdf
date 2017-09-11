@@ -10,7 +10,8 @@
 typedef struct		s_env
 {
 	//t_points		**cart;
-	char      *tit;
+	int				tmp;
+	char			*tit;
 	int				x;
 	int				y;
 	float			x1;
@@ -38,6 +39,9 @@ typedef struct		s_env
 
 typedef	struct		s_bresen
 {
+	int				slope;
+	int				flip;
+	int				yw;
 	int				x;
 	int				y;
 	float			offset;
