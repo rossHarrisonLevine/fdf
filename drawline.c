@@ -1,5 +1,11 @@
 #include "fdf.h"
 #include "./libft/libft.h"
+#include <stdio.h>
+float ft_fl_abs(float num)
+{
+	num *= ((num > 0) - (num < 0));
+	return (num);
+}
 
 void	drawpoint(t_env *win, t_bresen *bres)
 {
@@ -42,10 +48,11 @@ void	initbres(t_bresen *bres, t_env *win)
 		bres->adjust = win->m > 0 ? 1 : -1;
 		if (win->m <= 1 && win->m >= -1)
 			{
-				if (win->x2 < win->x2)
+				if (win->x2 < win->x1)
 				{
 					positivize(win, 0);
 					bres->y = win->y2;
+					bres->x = win->x1;
 				}
 				bres->flip = 0;
 			}
@@ -56,6 +63,7 @@ void	initbres(t_bresen *bres, t_env *win)
 				{
 					positivize(win, 1);
 					bres->x = win->x2;
+					bres->y = win->y1;
 				}
 				bres->flip = 1;
 			}
@@ -67,6 +75,7 @@ void	drawline(t_env *win)
 
 	bres = (t_bresen*)malloc(sizeof(t_bresen));
 	initbres(bres, win);
+	win->m = ft_fl_abs(win->m);
 	if (bres->flip == 0)
 	{
 		while (bres->x < win->x2 + 1)
@@ -115,8 +124,8 @@ int main(void)
 	win->win = mlx_new_window(win->mlx, win->w, win->h, win->tit);
 
 	win->x1 = 100;
-	win->x2 = 310;
-	win->y1 = 300;
+	win->x2 = 120;
+	win->y1 = 100;
 	win->y2 = 50;
 
 	drawline(win);
