@@ -124,7 +124,7 @@ int main(void)
 	win->win = mlx_new_window(win->mlx, win->w, win->h, win->tit);
 
 	win->x1 = 100;
-	win->x2 = 220;
+	win->x2 = 100;
 	win->y1 = 100;
 	win->y2 = 2000;
 
