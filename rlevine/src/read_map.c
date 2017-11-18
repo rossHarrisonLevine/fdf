@@ -6,7 +6,7 @@
 /*   By: rlevine <rlevine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 14:59:01 by rlevine           #+#    #+#             */
-/*   Updated: 2017/11/17 14:59:04 by rlevine          ###   ########.fr       */
+/*   Updated: 2017/11/17 17:51:31 by rlevine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,21 @@ t_point			*read_map(int fd)
 	char		*line;
 	char		**l_split;
 	int			depth;
+	static	int	len;
 
 	head = NULL;
 	depth = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
 		l_split = ft_strsplit(line, ' ');
+		if (len == 0)
+			len = (int)ft_twod_strlen(l_split);
+		else
+			if ((int)ft_twod_strlen(l_split) != len)
+				{
+					perror("Bad map");
+					exit(0);
+				}
 		head = add_line(head, make_line(l_split, depth));
 		free(l_split);
 		depth++;

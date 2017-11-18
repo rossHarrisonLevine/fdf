@@ -1,3 +1,0 @@
-NAME = fdf
-
-all : $(NAME)
